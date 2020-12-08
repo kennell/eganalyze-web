@@ -1,6 +1,6 @@
 # eganalyze-web
 
-A simple web application for [eganalyze](https://github.com/kennell/eganalyze).
+A simple web frontend for [eganalyze](https://github.com/kennell/eganalyze).
 
 [TRY IT OUT HERE 🚀](https://eganalyze.herokuapp.com/)
 
