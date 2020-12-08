@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='wing.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='eganalyze.css') }}"/>
+    <title>egnalyze - a free tool for analyzing estateguru portfolios</title>
+</head>
+<body>
+
+<section class="container center text-center">
+
+    <div>
+        <h1>
+            <a href="/">egnalyze</a>
+            <span class="version">{{ version }}</span>
+        </h1>
+
+        {% if results %}
+
+        <h2>📈 Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mean interest rate</td>
+                    <td>{{ results.mean_interest_rate|round(2) }}%</td>
+                </tr>
+                <tr>
+                    <td>Outstanding mean interest rate</td>
+                    <td>{{ results.outstanding_mean_interest_rate|round(2) }}%</td>
+                </tr>
+                <tr>
+                    <td>Outstanding weighted mean interest rate:</td>
+                    <td>{{ results.outstanding_weighted_mean_interest_rate|round(2) }}%</td>
+                </tr>
+                <tr>
+                    <td>Mean LTV</td>
+                    <td>{{ results.mean_ltv|round(2) }}%</td>
+                </tr>
+                <tr>
+                    <td>Outstanding mean LTV</td>
+                    <td>{{ results.outstanding_mean_ltv|round(2) }}%</td>
+                </tr>
+                <tr>
+                    <td>Outstanding weighted mean LTV</td>
+                    <td>{{ results.outstanding_weighted_mean_ltv|round(2) }}%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <h2>📈 a free tool for analyzing estateguru portfolios</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload a portfolio csv file:</label>
+            <input type="file" id="file" name="file" accept="text/csv">
+            <input type="submit" value="Upload">
+        </form>
+
+        {% endif %}
+
+
+    </div>
+
+</section>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
+
